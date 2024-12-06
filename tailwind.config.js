@@ -1,82 +1,77 @@
 /** @type {import('tailwindcss').Config} */
-export default {
-  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+
+module.exports = {
+  darkMode: "class",
+  content: ["./src/**/*.{js,jsx,ts,tsx}", "./public/index.html"],
   theme: {
+    colors: {
+      blue: {
+        200: "#EBF3FE",
+        300: "#539BFF",
+        400: "#4784d9",
+        500: "#ECF2FF",
+        600: "#5D87FF",
+        700: "#4f73d9",
+      },
+      cyan: {
+        400: "#E8F7FF",
+        500: "#49BEFF",
+        600: "#3ea2d9",
+      },
+      teal: {
+        400: "#E6FFFA",
+        500: "#13DEB9",
+        600: "#10bd9d",
+      },
+      yellow: {
+        400: "#FEF5E5",
+        500: "#FFAE1F",
+        600: "#d9941a",
+      },
+      red: {
+        400: "#FDEDE8",
+        500: "#FA896B",
+        600: "#d5745b",
+      },
+      gray: {
+        100: "#ebf1f6",
+        200: "#DFE5EF",
+        400: "#e5eaef",
+        500: "#5A6A85",
+        600: "#2a3547",
+        700: "#202936",
+      },
+      transparent: "transparent",
+      white: "#fff",
+    },
+
+    fontFamily: {
+      sans: ["Plus Jakarta Sans", "sans-serif"],
+    },
+    borderRadius: {
+      none: "0px",
+      md: "7px",
+      full: "50%",
+      "2xl": "15px",
+      "3xl": "9999px",
+    },
     extend: {
-      colors: {
-        primary: {
-          50: "#f0f4ff",
-          100: "#e0e9ff",
-          200: "#809bce",
-          300: "#95b8d1",
-          400: "#6d89bc",
-          500: "#5a76a9",
-          600: "#4a6596",
-          700: "#3a5483",
-          800: "#2a4370",
-          900: "#1a325d",
-        },
-        secondary: {
-          50: "#f0faf7",
-          100: "#e1f5ef",
-          200: "#b8e0d2",
-          300: "#d6eadf",
-          400: "#a5cdbf",
-          500: "#92baac",
-          600: "#7fa799",
-          700: "#6c9486",
-          800: "#598173",
-          900: "#466e60",
-        },
-        accent: {
-          50: "#fdf2f6",
-          100: "#fbe5ed",
-          200: "#eac4d5",
-          300: "#ecd5e0",
-          400: "#d7b1c2",
-          500: "#c49eaf",
-          600: "#b18b9c",
-          700: "#9e7889",
-          800: "#8b6576",
-          900: "#785263",
-        },
-        dark: {
-          DEFAULT: "#1f2937",
-          light: "#374151",
-        },
+      boxShadow: {
+        md: "rgba(145,158,171,0.2) 0px 0px 2px 0px,rgba(145,158,171,0.12) 0px 12px 24px -4px",
+        xl: "inset 0 1px 2px rgba(90,106,133,0.075)",
       },
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
-      },
-      keyframes: {
-        scrollLeft: {
-          "0%": { transform: "translateX(0)" },
-          "100%": { transform: "translateX(-100%)" },
-        },
-        scrollRight: {
-          "0%": { transform: "translateX(-100%)" },
-          "100%": { transform: "translateX(0)" },
-        },
-      },
-      animation: {
-        "scroll-left": "scrollLeft 40s linear infinite",
-        "scroll-right": "scrollRight 40s linear infinite",
-      },
+    },
+    container: {
+      center: true,
+      padding: "20px",
     },
   },
+  variants: {},
   plugins: [
-    function ({ addUtilities }) {
-      addUtilities({
-        ".scrollbar-hide": {
-          "-ms-overflow-style": "none",
-          "scrollbar-width": "none",
-          "&::-webkit-scrollbar": {
-            display: "none",
-          },
-        },
-      });
-    },
+    require("@tailwindcss/forms")({
+      strategy: "base",
+    }),
+    require("@tailwindcss/typography"),
+    require("preline/plugin"),
   ],
 };
